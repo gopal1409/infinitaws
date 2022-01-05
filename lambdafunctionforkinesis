@@ -39,3 +39,13 @@ to trigger this lambda function create a file input.txt and copy the content bel
 
 then use the invoke command to send the event tot he function
 aws lambda invoke --function-name ProcessKinesisRecords --payload file://input.txt out.txt
+
+we will create a kinesis stream
+aws kinesis create-stream --stream-name lambda-stream --shard-count-1
+aws kinesis describe-stream --stream-name lambda-stream
+
+if you want to put an event source
+aws lambda create-event-source-mapping --function-name ProcessKinesisRecords --event-source arn:aws:kinesis:us-east-2:384221790116:stream\lambda-stream --batch-size 100 --start-postion LATEST
+
+to test the record
+aws kinesis put-recordc --stream-name lambda-stream --partion-key 1 --data "this is an test lambda function"

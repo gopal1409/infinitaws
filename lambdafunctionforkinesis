@@ -8,3 +8,9 @@ exports.handler = function(event, context) {
         console.log('Decoded payload:', payload);
     });
 };
+
+
+first you need to zip the lambda function 
+1. zip function.zip index.js
+second you need to upload the lambda function
+2. aws lambda create function --function-name ProcessKinesisRecords --zip-file fileb://function.zip --handler index.handler --runtime nodejs12.x --role copytherolearnwhichwecreated earlier

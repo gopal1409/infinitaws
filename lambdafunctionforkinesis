@@ -14,3 +14,28 @@ first you need to zip the lambda function
 1. zip function.zip index.js
 second you need to upload the lambda function
 2. aws lambda create function --function-name ProcessKinesisRecords --zip-file fileb://function.zip --handler index.handler --runtime nodejs12.x --role copytherolearnwhichwecreated earlier
+
+to trigger this lambda function create a file input.txt and copy the content below also change the arn value
+{
+    "Records": [
+        {
+            "kinesis": {
+                "kinesisSchemaVersion": "1.0",
+                "partitionKey": "1",
+                "sequenceNumber": "49590338271490256608559692538361571095921575989136588898",
+                "data": "SGVsbG8sIHRoaXMgaXMgYSB0ZXN0Lg==",
+                "approximateArrivalTimestamp": 1545084650.987
+            },
+            "eventSource": "aws:kinesis",
+            "eventVersion": "1.0",
+            "eventID": "shardId-000000000006:49590338271490256608559692538361571095921575989136588898",
+            "eventName": "aws:kinesis:record",
+            "invokeIdentityArn": "arn:aws:iam::123456789012:role/lambda-kinesis-role",
+            "awsRegion": "us-east-2",
+            "eventSourceARN": "arn:aws:kinesis:us-east-2:123456789012:stream/lambda-stream"
+        }
+    ]
+}
+
+then use the invoke command to send the event tot he function
+aws lambda invoke --function-name ProcessKinesisRecords --payload file://input.txt out.txt

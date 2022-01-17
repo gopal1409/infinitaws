@@ -1,0 +1,26 @@
+
+[cloudshell-user@ip-10-1-35-4 cdk-app]$ history
+    1  sudo npm install -g aws-cdk
+    2  mkdir cdk-app
+    3  cd cdk-app/
+    4  cdk init --language javascript
+    5  cdk ls
+    6  cdk bootstrap
+    7  mkdir lambda && touch index.py
+    8  cd lambda/
+    9  ls
+   10  ls -la
+   11  vi index.py
+   12  nano index.py
+
+   14  sudo yum install nano -y
+ 
+   16  nano index.py
+   17  clear
+   18  cat index.py 
+   19  cd ..
+   20  cdk bootstrap
+   21  cdk synth
+   22  cdk deploy
+   23  history
+[cloudshell-user@ip-10-

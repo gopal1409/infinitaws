@@ -1,0 +1,4 @@
+11 aws kms encrypt --key-id alias/tutorial --plaintext fileb://ExampleSecret.txt --output text --query CiphertextBlob --region us-east-1 > ExampleSecretFileEncrypted.base64
+  12 ls
+  13 cat .\ExampleSecretFileEncrypted.base64
+  16 certutil -decode .\ExampleSecretFileEncrypted.base64 .\ExampleSecretFileEncrypted

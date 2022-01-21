@@ -2,3 +2,10 @@
   12 ls
   13 cat .\ExampleSecretFileEncrypted.base64
   16 certutil -decode .\ExampleSecretFileEncrypted.base64 .\ExampleSecretFileEncrypted
+
+Decrypt it
+ 22 aws kms decrypt --ciphertext-blob fileb://ExampleSecretFileEncrypted --output text --query Plaintext > ExampleSecretFileDerypted.base64 --region us-east-1
+  23 ls
+  24 certutil -decode ExampleSecretFileDerypted.base64 ExampleDerypted.txt
+  25 ls
+  26 cat ExampleDerypted.txt
